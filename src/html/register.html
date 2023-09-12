@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/input.css">
+
+    <title>Document</title>
+</head>
+
+<body  class=" login-body" style="direction: rtl ; " x-data="{nav:false ,index:false}" >
+  <header class="lg:flex justify-around">
+    <!--start-nav-->
+    <nav class="w-full h-auto fixed  top-0 left-0 z-30" x-data="{showNav:false,Desktop: window.innerWidth >= 1024}" x-init="() => {isDesktop = window.innerWidth >= 1024;}"  x-on:click.away="showNav=false">
+      <!--bars-menue-icon-->
+      <svg id="up" x-on:click="showNav=true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="lg:hidden w-6 h-6 absolute top-1 right-1 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <!--start-menue-->
+      <div x-bind:class="index ? 'lg:h-[350px]' : 'lg:h-[56px]' + (showNav ? ' right-0' : ' right-[-250px] lg:right-0')"
+      class="z-30 duration-300 overflow-hidden pr-2 w-[200px] lg:w-full h-[100vh]  absolute top-0 bottom-0 text-white shadow-lg shadow-black lg:shadow-none bg-gray-1 lg:bg-inherit font-ybakh flex flex-col gap-3">
+  
+        <!--logo lg-->
+        <div class="lg:hidden flex justify-center ">
+          <i>logo</i>
+        </div>
+        <div class="flex justify-center bg-gray-1 h-auto">
+        <div class="flex justify-between   relative top-0  w-[95%] items-center h-full pb-2 pt-2 ">
+         
+          <!--menue-mobile-->
+          <ul class="menus-wrapper w-full lg:w-auto flex flex-col gap-3 lg:flex-row lg:gap-1" x-show="!isDesktop">
+            <!--loaded-from-js-->
+          
+          </ul>
+          <!--menue-dekstop-->
+          <ul class="menus-wrapper-dekstop w-full lg:w-auto flex gap-2" x-show="isDesktop">
+            <!--loaded-from-js-->
+        
+          </ul>
+       <div class="flex gap-3 items-center">
+      
+       
+       <span class="w-9 h-9 rounded-full  ">
+        <img src="../../media/img/enamad.jpg" alt="">
+       </span>
+       <a id="profile" href="login.html"
+       class="font-ybakhbold  text-white  py-2 px-3 md:p-3 text-[10px] md:text-base  rounded-xl  bg-orange-1 hidden lg:flex items-center h-[40px]">
+      
+       
+       
+      </a>
+       </div>
+       
+        </div>
+      </div>
+      </div>
+      <!--start-menue-->
+  
+      <!--finish-menue-->
+    </nav>
+    <!--finish-nav-->
+  
+  </header>
+  <div class="translate-x-[50%] translate-y-[50%] w-[400px] h-[450px] absolute left-[50%] right-[50%]">
+    <div style="background: linear-gradient(#1845ad, #23a2f6)" class="h-[200px] w-[200px] absolute rounded-[50%] left-[-80px] top-[-80px]"></div>
+    <div style="background: linear-gradient(to right, #ff512f, #f09819);" class="h-[200px] w-[200px] absolute rounded-[50%] bottom-[-44px] right-[-30px]"></div>
+  </div>
+  <!--form-->
+  <div class="w-full flex justify-center">
+    <form x-bind:class="index ? ' lg:z-10' : 'lg:z-50'" class="login-form text-white font-ybakhbold mt-16 h-[650px] lg:h-[650px] w-[320px] sm:w-[400px] rounded-md backdrop-blur-[10px] p-[17px] shadow-2xl shadow-black">
+
+
+    <h3 class="font-ybakh text-center text-xl lg:text-4xl">ثبت نام</h3>
+  <!--username-->
+    <label  class="block mt-1"  for="username ">نام کاربری</label>
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" absolute top-[11px] right-1 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </svg>
+      
+      <input class=" placeholder:text-white outline-none pr-7 focus:border-b-2 focus:border-orange-1 block h-[50px] w-full rounded-lg p-3 mt-2    lg:relative z-20" type="text" placeholder=" نام کاربری خود را وارد کنید     " id="username">
+    
+    </div>
+    <!--name-->
+    <label class="block mt-1"  for="name ">نام </label>
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" absolute top-[11px] right-1 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </svg>
+      
+      <input class=" placeholder:text-white outline-none pr-7 focus:border-b-2 focus:border-orange-1 block h-[50px] w-full rounded-lg p-3 mt-2 lg:relative z-20" type="text" placeholder=" نام  خود را وارد کنید     " id="name">
+    
+    </div>
+    <!--email-->
+    <label class="block mt-1"  for="email ">ایمیل </label>
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute top-[11px] right-1 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+      </svg>
+      
+      <input class=" placeholder:text-white outline-none pr-9 focus:border-b-2 focus:border-orange-1 block h-[50px] w-full rounded-lg p-3 mt-2  lg:relative z-20" type="email" placeholder="ایمیل  خود را وارد کنید" id="email">
+    
+    </div>
+    <!--phone-->
+    <label class="block mt-1"  for="phone">شماره تلفن </label>
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-[11px] right-1 w-6 h-6">
+        <path d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" />
+        <path fill-rule="evenodd" d="M8.625.75A3.375 3.375 0 005.25 4.125v15.75a3.375 3.375 0 003.375 3.375h6.75a3.375 3.375 0 003.375-3.375V4.125A3.375 3.375 0 0015.375.75h-6.75zM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 017.5 19.875V4.125z" clip-rule="evenodd" />
+      </svg>
+      
+      <input class=" placeholder:text-white  outline-none pr-7 focus:border-b-2 focus:border-orange-1 block h-[50px] w-full rounded-lg p-3 mt-2    lg:relative z-20" type="text" placeholder="شماره تلفن  خود را وارد کنید" id="phone">
+    
+    </div>
+    <!--password-->
+    <label class="block mt-1" for="password ">پسوورد</label>
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" absolute top-[11px] right-1 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+      </svg>
+      
+      <input class="placeholder:text-white  outline-none focus:border-b-2 focus:border-orange-1 block h-[50px] w-full rounded-lg p-3 mt-2 pr-7 lg:relative z-20" type="password" placeholder="رمز خود را وارد کنید" id="password-signup">
+    
+ 
+    </div> 
+    <!--confirm-password-->
+    <label class="block mt-1" for="confirm-password ">پسوورد</label>
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" absolute top-[11px] right-1 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+      </svg>
+      
+      <input class="placeholder:text-white outline-none focus:border-b-2 focus:border-orange-1 block h-[50px] w-full rounded-lg p-3 mt-2 pr-7 lg:relative z-20" type="password" placeholder="رمز خود را مجدد وارد کنید" id="confirmpassword">
+    
+
+    </div> 
+<!--button-->
+    <button class=" mt-3 w-full text-white py-4 rounded-xl md:text-[15px] cursor-pointer" id="register-btn">ثبت نام</button>
+  <div class="flex flex-col  mt-1  items-center gap-2">
+    <div class="flex gap-1">
+      <span >ثبت نام کردید؟</span>
+      <a class="text-orange-1 " href="login.html">ورود  </a>
+    </div>
+  
+  </div>
+  </form>
+</div>
+</body>
+
+
+
+<script src="../../vandor/alpine/alpine.js"></script>
+<script>
+    import Alpine from 'alpinejs'
+   
+    window.Alpine = Alpine
+   
+    Alpine.start()
+   </script>
+
+<script src="../../vandor/sweetalert/sweetalert.js"></script>
+
+<script type="module" src="../js/register.js"></script>
+
+
+</html>

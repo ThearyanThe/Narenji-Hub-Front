@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/input.css">
+
+    
+    <title>Document</title>
+</head>
+
+<body class="bg-gray-1 body selection:bg-orange-1" style="direction: rtl;" x-data="{sorting:false , index:false }" >
+    <header class="lg:flex justify-around">
+        <!--start-nav-->
+        <nav class="w-full h-auto fixed  top-0 left-0 z-30" x-data="{showNav:false,Desktop: window.innerWidth >= 1024}" x-init="() => {isDesktop = window.innerWidth >= 1024;}"  x-on:click.away="showNav=false">
+          <!--bars-menue-icon-->
+          <svg id="up" x-on:click="showNav=true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="lg:hidden w-6 h-6 absolute top-1 right-1 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <!--start-menue-->
+          <div x-bind:class="index ? 'lg:h-[350px]' : 'lg:h-[56px]' + (showNav ? ' right-0' : ' right-[-250px] lg:right-0')"
+          class="z-30 duration-300 overflow-hidden pr-2 w-[200px] lg:w-full h-[100vh]  absolute top-0 bottom-0 text-white shadow-lg shadow-black lg:shadow-none bg-gray-1 lg:bg-inherit font-ybakh flex flex-col gap-3">
+      
+            <!--logo lg-->
+            <div class="lg:hidden flex justify-center ">
+              <i>logo</i>
+            </div>
+            <div class="flex justify-center bg-gray-1 h-auto">
+            <div class="flex justify-between   relative top-0  w-[95%]  items-center h-full pb-2 pt-2 ">
+             
+              <!--menue-mobile-->
+              <ul class="menus-wrapper w-full lg:w-auto flex flex-col gap-3 lg:flex-row lg:gap-1" x-show="!isDesktop">
+                <!--loaded-from-js-->
+              
+              </ul>
+              <!--menue-dekstop-->
+              <ul class="menus-wrapper-dekstop w-full lg:w-auto flex gap-2" x-show="isDesktop">
+                <!--loaded-from-js-->
+            
+              </ul>
+              <a id="profile" href="login.html"
+              class="font-ybakhbold  text-white  py-2 px-3 md:p-3 text-[10px] md:text-base  rounded-xl  bg-orange-1 hidden lg:flex items-center h-[40px]">
+             
+              
+              
+             </a>
+            </div>
+          </div>
+          </div>
+          <!--start-menue-->
+      
+          <!--finish-menue-->
+        </nav>
+        <!--finish-nav-->
+      
+      </header>
+      <main >
+        <!--head-of-category-->
+        <div class="flex  justify-center mt-14 lg:mt-20 relative">
+        <div class="w-[95%] lg:w-[85%] bg-gray-2 p-3 flex gap-2 rounded-md">
+          
+            <!--left-->
+          
+
+            <div class="w-full relative">
+            <!--serach-->
+<input type="text"  class="searching bg-gray-3 w-full h-full text-white rounded-full placeholder:text-white outline-none  focus:border-t-2 border-b-2 border-orange-1 focus:border-orange-1 block pr-8">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 absolute top-2 right-2 text-orange-1 ">
+    <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
+  </svg>
+  
+            </div>
+              <!--right-->
+              <div class="">
+                <!--sorting-->
+                <div class="font-ybakh   w-36 h-10  bg-gray-3 flex justify-center items-center relative rounded-t-md">
+                    <div class="defult flex justify-center items-center w-full  cursor-pointer " x-on:click="sorting=!sorting" x-on:click.away="sorting=false">
+                    <li class="filtering-list-default list-none   ">مرتب سازی پیشفرض</li>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                        <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <ul class="absolute top-[36px] bg-white mt-1 z-50 " x-cloak="" x-show="sorting">
+                      <li class="filtering-list list-none   flex justify-center border-b-2 border-t-2 bg-gray-3 border-gray-500 items-center hover:bg-gray-1 w-36 h-10 cursor-pointer "data-key="defult">مرتب سازی پیشفرض</li>
+
+                        <li class="filtering-list flex justify-center bg-gray-3 border-b-2 border-gray-500 items-center hover:bg-gray-1 w-36 h-10 cursor-pointer"data-key="new">  جدیدترین دوره ها</li>
+                        <li class="filtering-list flex justify-center bg-gray-3 border-b-2 border-gray-500 items-center hover:bg-gray-1 w-36 h-10 cursor-pointer"data-key="money">  غیررایگان  </li>
+                        <li class="filtering-list flex justify-center bg-gray-3 border-b-2 border-gray-500 items-center hover:bg-gray-1 w-36 h-10 cursor-pointer"data-key="free">فقط رایگان</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Category-Title">
+  <!--loaded from js-->
+  
+    </div>
+  
+  
+     </div>
+     <!--courses-->
+     <div class=" flex justify-center">
+      <div class="w-[95%] lg:w-[85%]  flex justify-center md:justify-between lg:justify-normal   flex-wrap gap-2 lg:gap-2" id="category-courses-wrapper">
+       <!--load-from-js-->
+      </div>
+      
+     </div>
+      <!--pagination-->
+ <div class="flex justify-center mt-3">
+  <ul class="text-slate-300 font-ybakhbold flex gap-1 " id="paginationWrapper">
+  
+  </ul>
+  </div>
+      </main>
+      <footer>
+        <!--footer-->
+        <div class="footer flex justify-center mt-16 text-white   overflow-hidden">
+         <div class="footer-continer w-[95%] lg:w-[85%] bg-gray-2 pt-2 pl-2 pr-2">
+          <!--title-->
+          <div class="flex justify-center">
+           LOGO
+      
+          </div>
+          <!--support-->
+          <div class=" font-ybakhbold text-xs  flex flex-col gap-1 pt-4">
+           <div class=" flex gap-2"> <span> شماره تلفن پشتیبانی :</span><span>09902345678</span></div>
+      
+           <div class=""><span>پشتیبانی و ثبت سفارش 24 ساعته</span></div>
+          </div>
+      
+          <!--about-->
+          <div class=" flex flex-col mt-3">
+           <a href="" class=" font-ybakhbold flex justify-center"><span class="text-slate-300">درباره  اموزشگاه نارنجی </span> </a>
+           <span href="" class="about__subtitle font-ybakh  text-xs"> لورم ایپسوم متن ساختگی با تولید
+            سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
+            سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+            کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آلورم ایپسوم متن ساختگی با تولید سادگی
+            نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
+            سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+            کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
+            تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی ینده شناخت فراوان جامعه
+            و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی
+           </span>
+      
+      
+      
+          </div>
+          <!--social-network-->
+          <div class=" flex flex-col justify-center items-center gap-3 mt-4">
+           <div class="social-network__title font- flex items-center gap-2  font-ybakhbold"><span>با ما همراه باشید
+            </span><i class="fas fa-smile"></i></div>
+           <!--social-network__icons-->
+           <div class=" flex gap-2 ">
+            <a href="" class=""><img class="h-8 w-8" src="../../media/img/instagram.png" alt="" srcset=""></a>
+            <a href="" class=""><img class="h-8 w-8" src="../../media/img/icons8-telegram-94.png" alt="" srcset=""></a>
+      
+      
+           </div>
+           <!--footer-enamd-->
+          </div>
+          <div class=" flex justify-between lg:justify-around items-center">
+           <a href=""> <img class="w-[150px] h-[150px]" src="../../media/img/enamad.jpg" alt=""></a>
+           <a href="#up"
+            class="h-40 w-16 rounded-t-full bg-orange-1 flex items-center justify-center font-ybakhfat duration-200 hover:scale-110">برو
+            بالا</a>
+      
+          </div>
+         </div>
+        </div>
+      
+      
+      
+      
+       </footer>
+    
+</body>
+
+
+<script type="module" src="../js/category.js"></script>
+<script src="../../vandor/alpine/alpine.js"  type="module"></script>
+<script src="../../vandor/swiper/swiper.js"></script>
+<script src="../js/SwiperContoroller.js"></script>
+
+<script type="module" src="../js/shared.js"></script>
+<script>
+ import Alpine from 'alpinejs'
+
+ window.Alpine = Alpine
+
+ Alpine.start()
+</script>
+</html>

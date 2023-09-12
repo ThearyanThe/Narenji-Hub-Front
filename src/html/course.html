@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/output.css">
+  <link rel="stylesheet" href="../css/input.css">
+
+  <title>Document</title>
+</head>
+
+<body class="bg-gray-1 body selection:bg-orange-1 " style="direction: rtl;" x-data="{sorting:false , index:false }">
+  <header class="lg:flex justify-around">
+    <!--start-nav-->
+    <nav class="w-full h-auto fixed  top-0 left-0 z-30" x-data="{showNav:false,Desktop: window.innerWidth >= 1024}"
+      x-init="() => {isDesktop = window.innerWidth >= 1024;}" x-on:click.away="showNav=false">
+      <!--bars-menue-icon-->
+      <svg id="up" x-on:click="showNav=true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+        stroke-width="1.5" stroke="currentColor" class="lg:hidden w-6 h-6 absolute top-1 right-1 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <!--start-menue-->
+      <div x-bind:class="index ? 'lg:h-[350px]' : 'lg:h-[56px]' + (showNav ? ' right-0' : ' right-[-250px] lg:right-0')"
+        class="z-30 duration-300 overflow-hidden pr-2 w-[200px] lg:w-full h-[100vh]  absolute top-0 bottom-0 text-white shadow-lg shadow-black lg:shadow-none bg-gray-1 lg:bg-inherit font-ybakh flex flex-col gap-3">
+
+        <!--logo lg-->
+        <div class="lg:hidden flex justify-center ">
+          <i>logo</i>
+        </div>
+        <div class="flex justify-center bg-gray-1 h-auto">
+          <div class="flex justify-between   relative top-0  w-[95%] lg:  lg:  items-center h-full pb-2 pt-2 ">
+
+            <!--menue-mobile-->
+            <ul class="menus-wrapper w-full lg:w-auto flex flex-col gap-3 lg:flex-row lg:gap-1" x-show="!isDesktop">
+              <!--loaded-from-js-->
+
+            </ul>
+            <!--menue-dekstop-->
+            <ul class="menus-wrapper-dekstop w-full lg:w-auto flex gap-2" x-show="isDesktop">
+              <!--loaded-from-js-->
+
+            </ul>
+            <a id="profile" href="login.html"
+              class="font-ybakhbold  text-white  py-2 px-3 md:p-3 text-[10px] md:text-base  rounded-xl  bg-orange-1 hidden lg:flex items-center h-[40px]">
+
+
+
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--start-menue-->
+
+      <!--finish-menue-->
+    </nav>
+    <!--finish-nav-->
+
+  </header>
+  <main class="">
+    <!--show loaction -->
+    <div class="w-full flex justify-center mt-9 lg:mt-24">
+      <div class="w-[95%]  lg:  bg-gray-2 h-12 flex items-center gap-3 py-3 rounded-sm">
+        <div class="icon p-1 bg-slate-500 rounded-md mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white">
+            <path
+              d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+            <path
+              d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+          </svg>
+        </div>
+        <div class="text-slate-500 font-ybakhbold">
+          <span class="" id="location"></span>
+        </div>
+      </div>
+
+    </div>
+    <!--course-info-->
+    <div class="w-full flex flex-col items-center mt-3">
+      <div class="w-[95%] lg:  ">
+        <div class="flex flex-col  lg:flex-row gap-3">
+          <!--course-photo-->
+          <div class="lg:w-[50%]" id="Course-Cover">
+
+          </div>
+          <!--course-detail-->
+          <div class="w-full lg:flex lg:flex-col lg:justify-between ">
+            <div>
+              <!--course-name-->
+              <div class="mt-2">
+                <span class="text-white font-ybakhbold text-lg" id="Course-Title"> </span>
+              </div>
+              <!--category-->
+              <div class="font-ybakhbold text-white mt-2 text-xs">
+                <a class="px-2 bg-orange-300 text-orange-1 rounded-sm font-ybakhfat" href="" id="Course-Category"> </a>
+              </div>
+              <!--opinions-->
+              <div class="text-white font-ybakhbold text-xs mt-2">
+                <!--count-opinion-->
+                <div class="flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                    <path fill-rule="evenodd"
+                      d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <span id="Course-opinion"></span>
+                  <span>دیدگاه</span>
+
+
+                </div>
+                <!--star-->
+                <div class="flex">
+                  <img src="../../media/img/star_fill.svg" alt="">
+                  <img src="../../media/img/star_fill.svg" alt="">
+                  <img src="../../media/img/star_fill.svg" alt="">
+                  <img src="../../media/img/star_fill.svg" alt="">
+                  <img src="../../media/img/star_fill.svg" alt="">
+                </div>
+              </div>
+              <!--price-->
+              <div class="text-white font-ybakhbold mt-2">
+
+                <div><span id="Course-Price"></span></div>
+
+                <div class="text-slate-300"> <del> ۳۲۰۰۰۰۰</del> <span>تومان</span></div>
+              </div>
+              <!--Short introduction-->
+              <div class="font-ybakhbold text-white text-opacity-80 mt-3 hidden lg:block">
+                <p class="leading-[27px]" id="Course-Desc"></p>
+              </div>
+            </div>
+
+            <!--register-->
+            <div class="flex flex-col items-center font-ybakhbold ">
+              <a class="bg-orange-1  w-[90%] py-2 flex justify-center rounded-sm mt-1 hover:bg-orange-700"
+                id="Course-Register" href=""> </a>
+              <a class="bg-slate-500  w-[90%] py-2 flex justify-center rounded-sm mt-1 hover:bg-slate-700 text-white"
+                href="">تماشای ویدیو های نمونه</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!--introduction-->
+        <div class="solgan  flex justify-center mt-6" data-aos="zoom-in" data-aos-duration="1000">
+          <div class="continer w-[95%] lg:   font-ybakh ">
+
+            <div class="slgan-fields  flex flex-wrap justify-center gap-3 mt-2 ">
+
+              <div class="solgan-field flex items-center gap-2 w-[45%] lg:w-auto  border-b-2 border-orange-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-6 h-6 text-orange-1">
+                  <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
+                    clip-rule="evenodd" />
+                </svg>
+
+
+                <div class="solgan-field__texts flex flex-col items-start text-sm lg:text-base">
+                  <div class="solgan-field__title font-ybakhfat text-white">
+                    <span> پشتیبانی</span>
+                  </div>
+
+                  <div class="solgan-field__desc">
+
+
+                    <span id="course-support" class="solgan__text text-xs lg:text-base text-slate-400">
+                      <!--js-->
+                    </span>
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div class="solgan-field flex items-center gap-2 w-[45%]  lg:w-auto border-b-2 border-orange-1 ">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-6 h-6 text-orange-1">
+                  <path fill-rule="evenodd"
+                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    clip-rule="evenodd" />
+                </svg>
+
+
+                <div class="solgan-field__texts flex flex-col items-start text-sm lg:text-base">
+                  <div class="solgan-field__title font-ybakhfat text-white">
+                    <span> مدرس دوره </span>
+                  </div>
+
+                  <div class="solgan-field__desc">
+
+                    <span class="solgan__text text-xs lg:text-base text-slate-400" id="Course-Creator"> <!--js-->
+                    </span>
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div class="solgan-field  flex items-center gap-2 w-[45%]  lg:w-auto border-b-2 border-orange-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-6 h-6 text-orange-1">
+                  <path fill-rule="evenodd"
+                    d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
+                    clip-rule="evenodd" />
+                  <path fill-rule="evenodd"
+                    d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
+                    clip-rule="evenodd" />
+                </svg>
+
+
+                <div class="solgan-field__texts flex flex-col items-start text-sm lg:text-base">
+                  <div class="solgan-field__title font-ybakhfat text-white">
+                    <span> تعداد جلسات </span>
+                  </div>
+
+                  <div class="solgan-field__desc">
+
+                    <span id="course-session" class="solgan__text text-xs lg:text-base text-slate-400"></span>
+                  </div>
+                </div>
+
+
+
+              </div>
+
+              <div class="solgan-field  flex items-center gap-2 w-[45%]  lg:w-auto border-b-2 border-orange-1 ">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class=" text-orange-1 w-6 h-6">
+                  <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+
+                <div class="solgan-field__texts flex flex-col items-start text-sm lg:text-base">
+                  <div class="solgan-field__title relative font-ybakhfat text-white">
+                    <span> وضعیت دوره </span>
+                  </div>
+
+                  <div class="solgan-field__desc text-slate-400">
+
+                    <span class="solgan__text text-xs lg:text-base" id="Course-Status"> </span>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Description-title-->
+        <div class="w-full flex justify-between">
+          <div class="lg:w-[69%] w-full">
+            <div class="w-full lg:w-full">
+              <div class="  flex justify-center w-[100%] mt-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-8 h-8 text-orange-2">
+                  <path
+                    d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                </svg>
+
+
+                <span class="  font-ybakhfat text-white  flex flex-col  md:text-2xl  w-[100%] mb-1 mr-1 ">
+                  <span id="intro-title" class="intro-title pr-2 relative h-[35px] flex items-center">
+                    <!--js-->
+
+                  </span>
+                  <div class="text-sm md:text font-ybakh p-1">
+                    <span>معرفی دوره</span>
+                    <span id="intro-desc"> </span>
+                  </div>
+                  <span id="intro-desc" class="text-sm md:text font-ybakh p-1">
+
+                    <!--js-->
+                  </span>
+                </span>
+              </div>
+              <!--description-->
+              <div class="text-slate-400 font-ybakhbold">
+                <p class="text-center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
+                  گرافیک
+                  است، چاپگرها و
+                  متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                  کاربردهای
+                  متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت
+                  فراوان
+                  جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+                  خلاقی،
+                  و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
+                  راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی
+                  سوالات
+                  پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی
+                  نامفهوم از
+                  صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                  لازم
+                  است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                  کتابهای
+                  زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
+                  شناخت
+                  بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
+                  صورت
+                  می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد
+                  نیاز
+                  شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
+                  گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                  چاپگرها و
+                  متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                  کاربردهای
+                  متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت
+                  فراوان
+                  جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+                  خلاقی،
+                  و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
+                  راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی
+                  سوالات
+                  پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی
+                  نامفهوم از
+                  صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                  لازم
+                  است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                  کتابهای
+                  زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
+                  شناخت
+                  بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
+                  صورت
+                  می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد
+                  نیاز
+                  شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
+                  گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                  چاپگرها و
+                  متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                  کاربردهای
+                  متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت
+                  فراوان
+                  جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+                  خلاقی،
+                  و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
+                  راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی
+                  سوالات
+                  پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی
+                  نامفهوم از
+                  صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                  لازم
+                  است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                  کتابهای
+                  زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
+                  شناخت
+                  بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
+                  صورت
+                  می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد
+                  نیاز
+                  شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
+                  گیرد.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="w-full " x-data="{mainsession:false}">
+              <div class=" w-full flex flex-col  gap-1">
+                <div class="bg-gray-3 p-2 rounded-lg">
+                  <!--sessions-->
+                  <div class="w-full lg:w-full mb-10 duration-500" x-bind:class=" mainsession?' h-[200px] ':'h-10' ">
+                    <!--session title-->
+                    <div class="flex justify-center h-8 w-[100%] mt-3 ">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-8 h-8 text-orange-2">
+                        <path
+                          d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                      </svg>
+                      <span class="font-ybakhfat text-white flex flex-col md:text-2xl w-[100%]  mr-1">
+                        <span class="intro-title pr-2 relative w-full  h-[35px] flex items-center z-20">جلسات
+                          دوره</span>
+
+                      </span>
+                    </div>
+                    <!--main-sessions-->
+                    <div
+                      class="bg-gray-2 font-ybakhfat flex gap-1 items-center h-11 cursor-pointer relative border-b-2 mt-1 border-none rounded-t-md">
+                      <svg x-show="!mainsession" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor" class="w-6 h-6" x-on:click="mainsession=!mainsession">
+                        <path fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <svg x-show="mainsession" x-on:click="mainsession=!mainsession" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="">جلسات دوره</span>
+                      <div class="absolute bg-gray-2 top-[44px] w-full ">
+                        <ul id="session-wrapper" class=" duration-500 overflow-scroll block "
+                          x-bind:class=" mainsession?' h-[130px] ':'h-0' ">
+
+
+
+
+
+
+                        </ul>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+            <!--comments-->
+            <section class=" ">
+
+
+              <!-- title -->
+              <div class="  flex justify-center w-[95%]  lg:  items-center my-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 lg:h-8 lg:w-8 text-orange-1">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                </svg>
+
+
+
+
+                <span class="  font-ybakhfat text-white  flex flex-col  md:text-2xl  w-[100%] mb-1  mr-1">
+                  <span class="intro-title relative pr-2 z-20"> نظرات کاربران </span>
+
+                </span>
+              </div>
+              <!-- profile -->
+              <div class="flex items-center font-ybakhbold text-xs lg:text-base text-slate-300 gap-2">
+                <!-- photo -->
+                <div class="bg-slate-500 rounded-full h-10 w-10 flex justify-center items-center ">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-9 h-9">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <!-- name -->
+                <div class="flex flex-col text-xs">
+                  <a href="" class="">aryan</a>
+                  <span class=" text-yellow-400">ایجاد نظر جدید</span>
+                </div>
+              </div>
+              <div class="bg-gray-2 rounded-lg w-full mt-2 p-1">
+                <!--score-->
+                <div class="rating flex justify-center flex-col text-2xl">
+                  <div class="font-ybakhbold text-slate-400">
+                    <span class="star cursor-pointer " data-key="5">★</span>
+                    <span class="star cursor-pointer " data-key="4">★</span>
+                    <span class="star cursor-pointer " data-key="3">★</span>
+                    <span class="star cursor-pointer " data-key="2">★</span>
+                    <span class="star cursor-pointer " data-key="1">★</span>
+                  </div>
+                 
+                  <span class="text-xs font-ybakhbold text-yellow-400">از یک تا پنج به این دوره امتیاز دهید</span>
+                </div>
+                <!-- text area -->
+                <textarea placeholder="نظر خود را بنویسید"
+                  class="w-full text-gray-300 font-ybakhbold p-2 rounded-lg mt-2 placeholder:text-gray-300 outline-none pr-7 focus:border-b-2 focus:border-orange-1 block"
+                  name="" id="comment-textarea" cols="30" rows="10"></textarea>
+                  <div class="my-2 flex justify-end">
+                  <span id="submitCommentBtn" class="bg-orange-3 cursor-pointer h-9  w-16 font-ybakhfat flex justify-center items-center rounded-md text-orange-1"> ارسال </span>
+                </div>
+                <!-- comment confirmed -->
+                <div id="commentsWrapper"
+                  class="mt-2 bg-gray-3 flex flex-col gap-3 font-ybakhbold text-xs lg:text-base text-slate-300 rounded-lg p-2">
+                  <!--js-->
+
+                </div>
+
+              </div>
+            </section>
+          </div>
+
+          <!--sidebar-->
+
+          <aside
+            class="bg-gray-2 h-[100vh] lg:flex lg:flex-col gap-10 lg:items-center rounded-md   w-[30%] hidden  mt-3 sticky top-0">
+            <!--short-link-->
+            <div class="bg-gray-3 w-[95%] lg:  mt-3 rounded-md font-ybakhbold text-slate-100  p-2 py-4 text-lg">
+              <div class="flex  gap-2 items-center">
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                  <path fill-rule="evenodd"
+                    d="M19.902 4.098a3.75 3.75 0 00-5.304 0l-4.5 4.5a3.75 3.75 0 001.035 6.037.75.75 0 01-.646 1.353 5.25 5.25 0 01-1.449-8.45l4.5-4.5a5.25 5.25 0 117.424 7.424l-1.757 1.757a.75.75 0 11-1.06-1.06l1.757-1.757a3.75 3.75 0 000-5.304zm-7.389 4.267a.75.75 0 011-.353 5.25 5.25 0 011.449 8.45l-4.5 4.5a5.25 5.25 0 11-7.424-7.424l1.757-1.757a.75.75 0 111.06 1.06l-1.757 1.757a3.75 3.75 0 105.304 5.304l4.5-4.5a3.75 3.75 0 00-1.035-6.037.75.75 0 01-.354-1z"
+                    clip-rule="evenodd" />
+                </svg>
+                <span>لینک کوتاه</span>
+              </div>
+              <div class="flex gap-1">
+                <a href=""
+                  class="border-b-2 border-stone-400 text-sm text-center text-slate-500  hover:text-orange-1">http://127.0.0.1:5500/front/src/html/course.html?name=js-20-lib</a>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 cursor-copy " id="shortlink">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+                </svg>
+
+              </div>
+
+            </div>
+            <!--progress bar-->
+            <div class="w-[95%]  lg:  bg-gray-3 p-4 rounded-md">
+              <div class="font-ybakhbold text-lg text-white flex gap-2 ">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                  <path
+                    d="M17.004 10.407c.138.435-.216.842-.672.842h-3.465a.75.75 0 01-.65-.375l-1.732-3c-.229-.396-.053-.907.393-1.004a5.252 5.252 0 016.126 3.537zM8.12 8.464c.307-.338.838-.235 1.066.16l1.732 3a.75.75 0 010 .75l-1.732 3.001c-.229.396-.76.498-1.067.16A5.231 5.231 0 016.75 12c0-1.362.519-2.603 1.37-3.536zM10.878 17.13c-.447-.097-.623-.608-.394-1.003l1.733-3.003a.75.75 0 01.65-.375h3.465c.457 0 .81.408.672.843a5.252 5.252 0 01-6.126 3.538z" />
+                  <path fill-rule="evenodd"
+                    d="M21 12.75a.75.75 0 000-1.5h-.783a8.22 8.22 0 00-.237-1.357l.734-.267a.75.75 0 10-.513-1.41l-.735.268a8.24 8.24 0 00-.689-1.191l.6-.504a.75.75 0 10-.964-1.149l-.6.504a8.3 8.3 0 00-1.054-.885l.391-.678a.75.75 0 10-1.299-.75l-.39.677a8.188 8.188 0 00-1.295-.471l.136-.77a.75.75 0 00-1.477-.26l-.136.77a8.364 8.364 0 00-1.377 0l-.136-.77a.75.75 0 10-1.477.26l.136.77c-.448.121-.88.28-1.294.47l-.39-.676a.75.75 0 00-1.3.75l.392.678a8.29 8.29 0 00-1.054.885l-.6-.504a.75.75 0 00-.965 1.149l.6.503a8.243 8.243 0 00-.689 1.192L3.8 8.217a.75.75 0 10-.513 1.41l.735.267a8.222 8.222 0 00-.238 1.355h-.783a.75.75 0 000 1.5h.783c.042.464.122.917.238 1.356l-.735.268a.75.75 0 10.513 1.41l.735-.268c.197.417.428.816.69 1.192l-.6.504a.75.75 0 10.963 1.149l.601-.505c.326.323.679.62 1.054.885l-.392.68a.75.75 0 101.3.75l.39-.679c.414.192.847.35 1.294.471l-.136.771a.75.75 0 101.477.26l.137-.772a8.376 8.376 0 001.376 0l.136.773a.75.75 0 101.477-.26l-.136-.772a8.19 8.19 0 001.294-.47l.391.677a.75.75 0 101.3-.75l-.393-.679a8.282 8.282 0 001.054-.885l.601.504a.75.75 0 10.964-1.15l-.6-.503a8.24 8.24 0 00.69-1.191l.735.268a.75.75 0 10.512-1.41l-.734-.268c.115-.438.195-.892.237-1.356h.784zm-2.657-3.06a6.744 6.744 0 00-1.19-2.053 6.784 6.784 0 00-1.82-1.51A6.704 6.704 0 0012 5.25a6.801 6.801 0 00-1.225.111 6.7 6.7 0 00-2.15.792 6.784 6.784 0 00-2.952 3.489.758.758 0 01-.036.099A6.74 6.74 0 005.251 12a6.739 6.739 0 003.355 5.835l.01.006.01.005a6.706 6.706 0 002.203.802c.007 0 .014.002.021.004a6.792 6.792 0 002.301 0l.022-.004a6.707 6.707 0 002.228-.816 6.781 6.781 0 001.762-1.483l.009-.01.009-.012a6.744 6.744 0 001.18-2.064c.253-.708.39-1.47.39-2.264a6.74 6.74 0 00-.408-2.308z"
+                    clip-rule="evenodd" />
+                </svg>
+
+                <span class="">درصد پیشرفت دوره</span>
+              </div>
+              <div class="bg-white w-full rounded-xl mt-2 overflow-hidden " style="direction: ltr" id="progressbar">
+                <div
+                  class="bg-orange-1 text-center font-ybakhfat text-white text-lg flex items-center justify-center h-7"
+                  style="background-image: url(../../media/img/Sprinkle.svg);background-position: center; background-size: cover;"
+                  id="progressbarprecent"></div>
+
+
+              </div>
+            </div>
+            <!--course-related-->
+            <div class="bg-gray-3  w-[95%]  lg:  mt-3 rounded-md font-ybakhbold text-slate-100  p-2 py-4 text-lg">
+              <div class="flex  gap-2 items-center">
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                  <path fill-rule="evenodd"
+                    d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z"
+                    clip-rule="evenodd" />
+                </svg>
+
+                <span> دوره های مرتبط</span>
+              </div>
+              <ul class="mt-2 flex flex-col gap-2" id="CourseRelatedWrapper">
+
+
+              </ul>
+            </div>
+            <!--support-->
+            <div class="font-ybakh text-white flex flex-col text-center text-lg">
+              <span>در صورت ایجاد هرگونه سوال یا مشکلی با پشتیبانی در تماس باشید</span>
+              <span class="flex flex-col justify-center items-center">
+                ایکون پیامک در گوشه ی صفحه بخش پشتیبانی است
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-7 h-7  animate-bounce text-left ">
+                  <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+
+              </span>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="">
+
+    <!--footer-->
+    <div class="footer flex justify-center text-white mt-4">
+      <div class="footer-continer w-[95%] lg:  lg:  bg-gray-2 pt-2 pl-2 pr-2">
+        <!--title-->
+        <div class="flex justify-center">
+          LOGO
+        </div>
+        <!--support-->
+        <div class="font-ybakhbold text-xs flex flex-col gap-1 pt-4">
+          <div class="flex gap-2">
+            <span>شماره تلفن پشتیبانی :</span>
+            <span>09902345678</span>
+          </div>
+          <div class="">
+            <span>پشتیبانی و ثبت سفارش 24 ساعته</span>
+          </div>
+        </div>
+        <!--about-->
+        <div class="flex flex-col mt-3">
+          <a href="" class="font-ybakhbold flex justify-center">
+            <span class="text-slate-300">درباره اموزشگاه نارنجی</span>
+          </a>
+          <span href="" class="about__subtitle font-ybakh text-xs">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+            گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+            برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+            کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آلورم ایپسوم متن ساختگی
+            با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و
+            متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
+            کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را
+            می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+            خلاقی ینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت
+            بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی
+          </span>
+        </div>
+        <!--social-network-->
+        <div class="flex flex-col justify-center items-center gap-3 mt-4">
+          <div class="social-network__title font- flex items-center gap-2 font-ybakhbold">
+            <span>با ما همراه باشید</span>
+            <i class="fas fa-smile"></i>
+          </div>
+          <!--social-network__icons-->
+          <div class="flex gap-2">
+            <a href="" class=""><img class="h-8 w-8" src="../../media/img/instagram.png" alt="" srcset=""></a>
+            <a href="" class=""><img class="h-8 w-8" src="../../media/img/icons8-telegram-94.png" alt="" srcset=""></a>
+          </div>
+          <!--footer-enamd-->
+        </div>
+        <div class="flex justify-between lg:justify-around items-center">
+          <a href=""> <img class="w-[150px] h-[150px]" src="../../media/img/enamad.jpg" alt=""></a>
+          <a href="#up"
+            class="h-40 w-16 rounded-t-full bg-orange-1 flex items-center justify-center font-ybakhfat duration-200 hover:scale-110">برو
+            بالا</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+<script type="module" src="../js/category.js"></script>
+<script src="../../vandor/alpine/alpine.js"></script>
+
+<script type="module" src="../js/course.js"></script>
+<script src="../js/func/progressbar.js"></script>
+<script type="module" src="../js/shared.js"></script>
+<script src="../../vandor/sweetalert/sweetalert.js"></script>
+<script>
+  import Alpine from 'alpinejs'
+
+  window.Alpine = Alpine
+
+  Alpine.start()
+</script>
+
+</html>
