@@ -376,3 +376,13 @@ button {
     display: none;
   }
 }
+.swal-button--cancel{
+  color: white;
+}
+.swal-content__input{
+  background: none;
+  background-color: #28293d;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}

@@ -25,10 +25,10 @@ const getAndShowCoursesDetail = async () => {
     const res = await fetch(
         `http://localhost:4000/v1/courses/${courseyName}`
     );
-    const courses = await res.json();
-    console.log(courses);
+    const course = await res.json();
+  console.log(course);
     //related-course
-getRelatedCourses(courses)
+getRelatedCourses(course)
    //copy-shortlink
    let myVar=shortLink.innerHTML.trim()
    shortLink.addEventListener("click",()=>{
@@ -36,44 +36,199 @@ getRelatedCourses(courses)
     navigator.clipboard.writeText(myVar)
    })
     //Course-name
-    Title.innerHTML = courses.name
+    Title.innerHTML = course.name
     //Course-description
-    Description.innerHTML = courses.description
+    Description.innerHTML = course.description
     //Course-Category
-    Category.innerHTML = courses.categoryID.title
+    Category.innerHTML = course.categoryID.title
     //Course-Register
-    Register.innerHTML = courses.isUserRegisteredToThisCourse ? " شما دانشجوی دوره هستید" : "ثبت نام"
+    if(course.isUserRegisteredToThisCourse){
+      Register.innerHTML="شما دانشجوی دوره هستید"
+    }
+    else{
+      Register.innerHTML="ثبت نام در دوره"
+      Register.addEventListener("click",(event)=>{
+      event.preventDefault()
+      //free-course
+      if (course.price == 0) {
+        showSwal(
+          "آیا از ثبت نام در دوره اطمینان دارید؟",
+          "warning",
+          ["نه", "آره"],
+          async (result) => {
+            if (result) {
+              const res = await fetch(
+                `http://localhost:4000/v1/courses/${course._id}/register`,
+                {
+                  method: "POST",
+                  headers: {
+                    Authorization: `Bearer ${getToken()}`,
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ price: 0 }),
+                }
+              );
+              const resp=res.json()
+console.log(resp);
+              if (res.ok) {
+                showSwal(
+                  "با موفقیت در دوره ثبت نام شدید",
+                  "success",
+                  "هورررراااا",
+                  () => {
+                    location.reload();
+                  }
+                );
+              }
+              else{
+                showSwal(
+                  " قبلا ثبت نام کردی ولی بک اند مشکل داشته و شما جزو ثبت نامی ها نشدید",
+                  "warning",
+                  "ok",
+                  () => {
+                    location.reload();
+                  }
+                );
+              }
+            }
+          }
+          
+        );
+      }
+      else {
+        showSwal(
+          "آیا از ثبت نام در دوره اطمینان دارید؟",
+          "warning",
+          ["نه", "آره"],
+          async (result) => {
+            if (result) {
+              showSwal(
+                "آیا کد تخفیف دارید؟",
+                "warning",
+                ["نه", "آره"],
+                async (result) => {
+                  if (result) {
+                    swal({
+                      title: "کد تخفیف را وارد نمایید:",
+                      content: "input",
+                      button: "اعمال تخفیف",
+                    }).then((code) => {
+                      fetch(`http://localhost:4000/v1/offs/${code}`, {
+                        method: "POST",
+                        headers: {
+                          Authorization: `Bearer ${getToken()}`,
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ course: course._id }),
+                      })
+                        .then((res) => {
+                          if (res.status === 404) {
+                            showSwal(
+                              "کد تخفیف معتبر نمی‌باشد",
+                              "error",
+                              "ای بابا",
+                              () => {}
+                            );
+                          } else if (res.status === 409) {
+                            showSwal(
+                              "مهلت استفاده از کد تخفیف به اتمام رسیده",
+                              "error",
+                              "ای بابا",
+                              () => {}
+                            );
+                          }
+                          return res.json();
+                        })
+                        .then((code) => {
+                          console.log(code);
+
+                          fetch(
+                            `http://localhost:4000/v1/courses/${course._id}/register`,
+                            {
+                              method: "POST",
+                              headers: {
+                                Authorization: `Bearer ${getToken()}`,
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({ price: course.price - (course.price * code.percent / 100) }),
+                            }
+                          ).then((res) => {
+                            if (res.ok) {
+                              showSwal(
+                                "با موفقیت در دوره ثبت نام شدید",
+                                "success",
+                                "هورررراااا",
+                                () => {
+                                  location.reload();
+                                }
+                              );
+                            }
+                          });
+                        });
+                    });
+                  } else {
+                    const res = await fetch(
+                      `http://localhost:4000/v1/courses/${course._id}/register`,
+                      {
+                        method: "POST",
+                        headers: {
+                          Authorization: `Bearer ${getToken()}`,
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ price: course.price }),
+                      }
+                    );
+
+                    if (res.ok) {
+                      showSwal(
+                        "با موفقیت در دوره ثبت نام شدید",
+                        "success",
+                        "هورررراااا",
+                        () => {
+                          location.reload();
+                        }
+                      );
+                    }
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+      })
+    }
     //Course-Price
-    Price.innerHTML = courses.price ? convertEnNumberToPersian(courses.price)+"تومان" : "رایگان " 
+    Price.innerHTML = course.price ? convertEnNumberToPersian(course.price)+"تومان" : "رایگان " 
     //Course-Creator
-    Creator.innerHTML = courses.creator.name
+    Creator.innerHTML = course.creator.name
     //Course-Cover
-    Cover.innerHTML = `  <img class="w-full h-full rounded-md" src="http://localhost:4000/courses/covers/${courses.cover}" >`
+    Cover.innerHTML = `  <img class="w-full h-full rounded-md" src="http://localhost:4000/courses/covers/${course.cover}" >`
     //Course-Status
-    Status.innerHTML = courses.isComplete ? "به اتمام رسیده است" : "درحال برگزاری است"
+    Status.innerHTML = course.isComplete ? "به اتمام رسیده است" : "درحال برگزاری است"
         //Course-Opinion
-       Opinion.innerHTML =convertEnNumberToPersian( courses.comments.length)
+       Opinion.innerHTML =convertEnNumberToPersian( course.comments.length)
         //Course-intro-title
-        IntroTitle.innerHTML=courses.name
+        IntroTitle.innerHTML=course.name
          //Course-intro-desc
-         IntroDesc.innerHTML=courses.name
+         IntroDesc.innerHTML=course.name
             //Course-session
-       SessionsCount.innerHTML =convertEnNumberToPersian( courses.sessions.length)
+       SessionsCount.innerHTML =convertEnNumberToPersian( course.sessions.length)
          //Course-support
-         Support.innerHTML=courses.support
+         Support.innerHTML=course.support
           //Course-location
-    Location.innerHTML ="دوره ها> " + courses.categoryID.title+">"+courses.name
+    Location.innerHTML ="دوره ها> " + course.categoryID.title+">"+course.name
               //Course-sessionWrapper
      
              let index = 1;
-if(courses.sessions.length){
-    courses.sessions.forEach(element => {
+if(course.sessions.length){
+    course.sessions.forEach(element => {
                 
         sessionsWrapper.insertAdjacentHTML("beforeend",`
         <li class="flex items-center justify-between px-4 font-ybakhbold border-b-2 bg-gray-2 border-gray-3 h-11 pr-2 hover:bg-gray-1 ">
             <div class="flex gap-1 items-center">
                 <span class="border-2 border-slate-500 rounded-full h-7 w-7 flex justify-center items-center">${index}</span>
-                <a href="episode.html?name=${courses.shortName}&id=${element._id}"> ${element.title}</a>
+                <a href="episode.html?name=${course.shortName}&id=${element._id}"> ${element.title}</a>
             </div>
             <!--time-->
             <span> ${element.time}</span>
@@ -83,7 +238,7 @@ if(courses.sessions.length){
 
     
 
-     index++; // افزایش شمارنده
+     index++; 
  });
 }
     else{
@@ -102,12 +257,12 @@ if(courses.sessions.length){
 
             </li>
         `)
-         index++; // افزایش شمارنده
+         index++; 
     
     }    
    //comments
-   if(courses.comments.length){
-   courses.comments.forEach(element => {
+   if(course.comments.length){
+   course.comments.forEach(element => {
                 
     CommentsWrapper.insertAdjacentHTML("beforeend",`
     
@@ -138,7 +293,8 @@ if(courses.sessions.length){
 
   </div>
   <p class="w-full break-words text-xs">  ${element.body}</p>
-  ${element.answer?`  <!--answer to comment-->
+  ${element.answerContent?`  
+  <!--answer to comment-->
   <div
     class="mt-2 bg-gray-1 flex flex-col gap-3 font-ybakhbold text-xs lg:text-base text-slate-300 rounded-lg p-2 mr-6">
     <div class="flex  gap-2 ">
@@ -175,14 +331,14 @@ if(courses.sessions.length){
 
 
 `)
- index++; // افزایش شمارنده
+ index++; 
 }
 );}
 else{
 CommentsWrapper.insertAdjacentHTML("beforeend",
 `               <span>هنوز کامنتی ثبت نشده است! <span class="text-yellow-400">اولین نفری باش که نظر میده(:</span></span>`)
 }
-    return courses;
+    return course;
    
 };
 

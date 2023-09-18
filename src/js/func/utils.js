@@ -128,7 +128,6 @@ return output
    
   }
   const paginateItems = (array, itemsPerPage, paginateParentElem, currentPage) => {
-    paginateParentElem.innerHTML = ''
     let endIndex = itemsPerPage * currentPage
     let startIndex = endIndex - itemsPerPage
     let paginatedItems = array.slice(startIndex, endIndex)
