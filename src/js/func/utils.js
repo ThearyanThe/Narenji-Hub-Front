@@ -30,14 +30,16 @@ const showSwal = (title, icon, buttons, callback) => {
        <div  class=" w-[47%] md:w-[31%] lg:w-[24%] bg-gray-3  rounded-xl overflow-hidden " id="courses-container" >
       <a href="course.html?name=${course.shortName}">
       <!--photo-->
-      <div class="img">
-      <img src="../../../backend-v0.3.0/public/courses/covers/${course.cover}">
+      <div class="img relative">
+      <img src="../../../Narenji-Hub-Backend/public/courses/covers/${course.cover}">
+      ${course.discount?` <div class="bg-orange-1 h-4 w-10  lg:h-8 lg:w-14 text-[10px] lg:text-base  rounded-sm flex justify-center items-center  absolute top-2 right-2  font-ybakhbold text-white"> <span>%</span>  ${convertEnNumberToPersian(course.discount)}  </div>`:""}
+     
     </div>
     <div class="">
       <div class="mx-1 ">
         <!--title-->
         <div class="px-1 md:px-2 py-1">
-          <h1 class="font-ybakhfat text-right text-xs md:text-base text-white">  ${course.name}</h1>
+          <h1 class="font-ybakhfat text-right text-[10px] md:text-base text-white">  ${course.name}</h1>
         </div>
         
         <!--rate-and-teacher-->
@@ -63,7 +65,7 @@ const showSwal = (title, icon, buttons, callback) => {
                     
           </div>
 <!--teacher-->
-    <div class="flex items-center gap-1 font-ybakhbold text-white text-xs">
+    <div class="flex items-center gap-1 font-ybakhbold text-white text-[10px]">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-slate-300 w-4 h-4 md:w-5 md:h-5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
       </svg>
@@ -74,13 +76,28 @@ const showSwal = (title, icon, buttons, callback) => {
       <!--price and student-->
       <div  class=" flex items-center justify-between  flex-row-reverse px-1 md:px-2 pt-2">
         <!--price-->
+        <div class="flex gap-2 ">
+        ${course.price!=0 && course.discount?` <del class="text-orange-1">
         <div>
+             <span   class=" font-ybakhbold text-[10px] md:text-base text-white">${course.price === 0 ? "رایگان" :convertEnNumberToPersian(course.price)}</span>
+             <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">${course.price === 0 ? "" :"تومان"}</span>
+       </div>
+       </del>`:`
+       <div>
+            <span   class=" font-ybakhbold text-[10px] md:text-base text-white">${course.price === 0 ? "رایگان" :convertEnNumberToPersian(course.price)}</span>
+            <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">${course.price === 0 ? "" :"تومان"}</span>
+      </div>
+        `}
        
-<span   class=" font-ybakhbold text-xs md:text-base text-white">${course.price === 0 ? "رایگان" :convertEnNumberToPersian(course.price)}</span>
-<span   class=" font-ybakhbold text-xs md:text-base text-slate-400 ">${course.price === 0 ? "" :"تومان"}</span>
+      <!--discount-->
+      ${course.price!=0&&course.discount?`   <div class=" animate-pulse ">
+      <span   class=" font-ybakhbold text-[10px] md:text-base text-white "> ${convertEnNumberToPersian((course.price)-((course.discount/100)*course.price))}</span>
+      <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">تومان</span>
+      </div>`:""}
+   
 </div>
 <!--student-->
-<div class="text-xs flex gap-1 items-center text-white ">
+<div class="text-[10px] flex gap-1 items-center text-white ">
  
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 mb-[0.5px]">
     <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
@@ -88,11 +105,11 @@ const showSwal = (title, icon, buttons, callback) => {
   </svg>
   
   
-  <span class="font-ybakhbold text-xs md:text-base ">${convertEnNumberToPersian(course.registers) }</span>
+  <span class="font-ybakhbold text-[10px] md:text-base ">${convertEnNumberToPersian(course.registers) }</span>
 </div>
       </div>
       <!--visit-info-->
-      <div class=" flex justify-center h-12 md:h-16 border-t-2 border-orange-1 text-xs md:text-base text-orange-1">
+      <div class=" flex justify-center h-12 md:h-16 border-t-2 border-orange-1 text-[10px] md:text-base text-orange-1">
         <a class="flex gap-2 items-center font-ybakhfat" href=""> 
           مشاهده اطلاعات دوره 
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">

@@ -1120,6 +1120,10 @@ video {
   height: 100%;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -1234,6 +1238,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-1 {
+  width: 0.25rem;
 }
 
 .flex-1 {
@@ -1366,6 +1374,27 @@ video {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .cursor-copy {
@@ -2290,6 +2319,10 @@ video {
   border-top-right-radius: 0.25rem;
 }
 
+.rounded-bl-lg {
+  border-bottom-left-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -2515,6 +2548,16 @@ video {
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
+.bg-orange-2 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 105 5 / var(--tw-bg-opacity));
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-30 {
@@ -3044,6 +3087,26 @@ video {
 .text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
+}
+
+.text-red-900 {
+  --tw-text-opacity: 1;
+  color: rgb(127 29 29 / var(--tw-text-opacity));
+}
+
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .text-opacity-80 {
@@ -3826,6 +3889,18 @@ button {
   }
 }
 
+.swal-button--cancel{
+  color: white;
+}
+
+.swal-content__input{
+  background: none;
+  background-color: #28293d;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -4380,6 +4455,10 @@ button {
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:w-14 {
+    width: 3.5rem;
   }
 
   .lg\:flex-row {
