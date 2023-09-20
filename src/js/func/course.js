@@ -353,7 +353,7 @@ const getRelatedCourses=async(courseRelatedLocation)=>{
  RelatedCourses.forEach(element => {
                 
     CourseRelatedWrapper.insertAdjacentHTML("beforeend",`
-    <li  ><a class="flex items-center gap-2 text-sm text-slate-500 hover:text-orange-1 " href="course.html?name=${element.shortName}"><img class="w-14 h-10 rounded-md"  src="http://localhost:4000/courses/covers/${element.cover}" alt=""><span class="">  ${element.name}</span></a></li>
+    <li  ><a class="flex items-center gap-2 text-sm text-slate-300 hover:text-orange-1 " href="course.html?name=${element.shortName}"><img class="w-14 h-10 rounded-md"  src="http://localhost:4000/courses/covers/${element.cover}" alt=""><span class="">  ${element.name}</span></a></li>
 `)
 
 

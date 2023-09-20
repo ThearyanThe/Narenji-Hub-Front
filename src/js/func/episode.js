@@ -33,13 +33,13 @@ date.innerHTML=session.session.createdAt.slice(0,10)
         
       //sessions
         sessionsWrapper.insertAdjacentHTML("beforeend",`
-            <li class="flex items-center justify-between px-4 font-ybakhbold border-b-2 border-gray-2 h-11 pr-2 hover:bg-gray-1 text-gray-900 ">
+            <li class="flex items-center justify-between px-4 font-ybakhbold border-b-2 border-gray-2 h-11 pr-2 hover:bg-gray-1 text-gray-2">
                 <div class="flex gap-1 items-center">
                     <span class="border-b-2 border-gray-2 h-6 w-6 flex justify-center items-center">${convertEnNumberToPersian(index)}</span>
                     <a class="text-xs lg:text-base" href="episode.html?name=${courseShortName}&id=${element._id}"> ${element.title}</a>
                 </div>
                 <!--time-->
-                <span class="text-gray-1"> ${element.time}</span>
+                <span class="text-gray-2"> ${element.time}</span>
             </li>
         `);
      

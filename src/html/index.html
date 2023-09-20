@@ -26,7 +26,7 @@
    <nav class="w-full " x-data="{showNav:false,Desktop: window.innerWidth >= 1024}" x-init="() => {     isDesktop = window.innerWidth >= 1024; }  " x-on:click.away="showNav=false">
     <!--bars-menue-icon-->
     <svg id="up" x-on:click="showNav=true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-     stroke-width="1.5" stroke="currentColor" class="lg:hidden fixed w-6 h-6 top-1 right-1 text-white z-30">
+     stroke-width="1.5" stroke="currentColor" class="lg:hidden fixed w-6 h-6 top-1 right-1 text-white ">
      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
     </svg>
     <!--start-menue-->
@@ -45,24 +45,14 @@
       </ul>
       <!--menue-dekstop-->
       <ul class="menus-wrapper-dekstop w-full  lg:w-auto flex gap-2"  x-show="isDesktop">
-
-      
-     
      </ul>
-     
-
-
-
-
      </div>
-
     </div>
     <!--finish-menue-->
-
    </nav>
    <!--finish-nav-->
 
-   <span class="absolute top-1 left-2 text-2xl text-white hidden lg:block">LOGO</span>
+   <span class="absolute top-1 left-2 text-2xl font-ybakhfat text-white hidden lg:block">LOGO</span>
    <!--welocom to website-->
    <div
     class="  w-full flex translate-x-[50%] translate-y-[50%]  absolute z-10 top-[30%] right-[50%] left[50%] bottom-[50%] flex-col justify-center items-center gap-2 md:gap-4">
@@ -106,7 +96,7 @@
 
     <span class="  font-ybakhfat text-white  flex flex-col  md:text-2xl  w-[100%] mb-1  mr-1">
       <div class="flex justify-between items-center ">
-      <span class="intro-title-index relative pr-2 "> جدیدترین دوره ها</span>
+      <span class="intro-title-index relative pr-2 ">   چرا مارو انتخاب کردید؟</span>
       <a href="" class="text-xs lg:text-sm items-center flex gap-1 text-orange-3"><span>   پشتت به نارنجی گرم باشه </span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
@@ -115,7 +105,7 @@
     </a>
      
      </div>
-      <span class="text-xs md:text-sm font-ybakh p-1"> به روز ترین دوره های منتشر شده
+      <span class="text-xs md:text-sm font-ybakh p-1">  نارنجی هاب تا اخر با شماست
       </span>
      </span>
    </div>

@@ -1,38 +1,38 @@
 import { convertEnNumberToPersian } from "../numberToPersian.js";
 
 const showSwal = (title, icon, buttons, callback) => {
-    swal({
-      title,
-      icon,
-      buttons,
-    }).then(result => callback(result));
-  };
-  const saveIntoLocalStorage = (key, value) => {
-    return localStorage.setItem(key, JSON.stringify(value));
-  };
-  const getToken = () => {
-    const userInfos = JSON.parse(localStorage.getItem("user"));
-    return userInfos ? userInfos.token : null;
-  };
-  const isLogin = () => {
-    const userInfos = localStorage.getItem("user");
-    return userInfos ? true : false;
-  };
-  const getUrlParam = (key) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(key);
-  };
-  const insertAdjacentHTML=(wrapper,array)=>{
-    array.map((course) => {
-      wrapper.insertAdjacentHTML(
-       "beforeend",
-       `
+  swal({
+    title,
+    icon,
+    buttons,
+  }).then(result => callback(result));
+};
+const saveIntoLocalStorage = (key, value) => {
+  return localStorage.setItem(key, JSON.stringify(value));
+};
+const getToken = () => {
+  const userInfos = JSON.parse(localStorage.getItem("user"));
+  return userInfos ? userInfos.token : null;
+};
+const isLogin = () => {
+  const userInfos = localStorage.getItem("user");
+  return userInfos ? true : false;
+};
+const getUrlParam = (key) => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(key);
+};
+const insertAdjacentHTML = (wrapper, array) => {
+  array.map((course) => {
+    wrapper.insertAdjacentHTML(
+      "beforeend",
+      `
        <div  class=" w-[47%] md:w-[31%] lg:w-[24%] bg-gray-3  rounded-xl overflow-hidden " id="courses-container" >
       <a href="course.html?name=${course.shortName}">
       <!--photo-->
       <div class="img relative">
       <img src="../../../Narenji-Hub-Backend/public/courses/covers/${course.cover}">
-      ${course.discount?` <div class="bg-orange-1 h-4 w-10  lg:h-8 lg:w-14 text-[10px] lg:text-base  rounded-sm flex justify-center items-center  absolute top-2 right-2  font-ybakhbold text-white"> <span>%</span>  ${convertEnNumberToPersian(course.discount)}  </div>`:""}
+      ${course.discount ? ` <div class="bg-orange-1 h-4 w-10  lg:h-8 lg:w-14 text-[10px] lg:text-base  rounded-sm flex justify-center items-center  absolute top-2 right-2  font-ybakhbold text-white"> <span>%</span>  ${convertEnNumberToPersian(course.discount)}  </div>` : ""}
      
     </div>
     <div class="">
@@ -49,16 +49,16 @@ const showSwal = (title, icon, buttons, callback) => {
           ${Array(5 - course.courseAverageScore)
         .fill(0)
         .map(
-         (score) =>
-          '<img src="../../media/img/star.svg" alt="" class="w-[14px] h-[14px] lg:w-auto lg:h-auto">'
+          (score) =>
+            '<img src="../../media/img/star.svg" alt="" class="w-[14px] h-[14px] lg:w-auto lg:h-auto">'
         )
         .join("")}
           ${Array(course.courseAverageScore)
         .fill(0)
         .map(
-         (score) =>
-    
-          '<img src="../../media/img/star_fill.svg" alt="" class="w-[14px] h-[14px] lg:w-auto lg:h-auto">'
+          (score) =>
+
+            '<img src="../../media/img/star_fill.svg" alt="" class="w-[14px] h-[14px] lg:w-auto lg:h-auto">'
         )
         .join("")}
        
@@ -77,23 +77,23 @@ const showSwal = (title, icon, buttons, callback) => {
       <div  class=" flex items-center justify-between  flex-row-reverse px-1 md:px-2 pt-2">
         <!--price-->
         <div class="flex gap-2 ">
-        ${course.price!=0 && course.discount?` <del class="text-orange-1">
+        ${course.price != 0 && course.discount ? ` <del class="text-orange-1">
         <div>
-             <span   class=" font-ybakhbold text-[10px] md:text-base text-white">${course.price === 0 ? "رایگان" :convertEnNumberToPersian(course.price)}</span>
-             <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">${course.price === 0 ? "" :"تومان"}</span>
+             <span   class=" font-ybakhbold text-[10px] md:text-base text-white">${course.price === 0 ? "رایگان" : convertEnNumberToPersian(course.price)}</span>
+             <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">${course.price === 0 ? "" : "تومان"}</span>
        </div>
-       </del>`:`
+       </del>`: `
        <div>
-            <span   class=" font-ybakhbold text-[10px] md:text-base text-white">${course.price === 0 ? "رایگان" :convertEnNumberToPersian(course.price)}</span>
-            <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">${course.price === 0 ? "" :"تومان"}</span>
+            <span   class=" font-ybakhbold text-[10px] md:text-base text-white">${course.price === 0 ? "رایگان" : convertEnNumberToPersian(course.price)}</span>
+            <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">${course.price === 0 ? "" : "تومان"}</span>
       </div>
         `}
        
       <!--discount-->
-      ${course.price!=0&&course.discount?`   <div class=" animate-pulse ">
-      <span   class=" font-ybakhbold text-[10px] md:text-base text-white "> ${convertEnNumberToPersian((course.price)-((course.discount/100)*course.price))}</span>
+      ${course.price != 0 && course.discount ? `   <div class=" animate-pulse ">
+      <span   class=" font-ybakhbold text-[10px] md:text-base text-white "> ${convertEnNumberToPersian((course.price) - ((course.discount / 100) * course.price))}</span>
       <span   class=" font-ybakhbold text-[10px] md:text-base text-slate-400 ">تومان</span>
-      </div>`:""}
+      </div>`: ""}
    
 </div>
 <!--student-->
@@ -105,7 +105,7 @@ const showSwal = (title, icon, buttons, callback) => {
   </svg>
   
   
-  <span class="font-ybakhbold text-[10px] md:text-base ">${convertEnNumberToPersian(course.registers) }</span>
+  <span class="font-ybakhbold text-[10px] md:text-base ">${convertEnNumberToPersian(course.registers)}</span>
 </div>
       </div>
       <!--visit-info-->
@@ -126,39 +126,39 @@ const showSwal = (title, icon, buttons, callback) => {
     </a>
     </div>
           `
-      );
-   
-     });
-  };
-  const SearchInArray=(array,searchproperty,searchvalue)=>{
-let output=array.filter(item=>item[searchproperty].includes(searchvalue))
-return output
-  };
-  const addParamToUrl = (param, value) => {
+    );
 
-    let url = new URL(location.href)
-    let searchParams = url.searchParams
-  
-    searchParams.set(param, value)
-    url.search = searchParams.toString()
-    location.href = url.toString()
-   
-  }
-  const paginateItems = (array, itemsPerPage, paginateParentElem, currentPage) => {
-    let endIndex = itemsPerPage * currentPage
-    let startIndex = endIndex - itemsPerPage
-    let paginatedItems = array.slice(startIndex, endIndex)
-    let paginatedCount = Math.ceil(array.length / itemsPerPage)
-  
-    for(let i = 1 ; i < paginatedCount + 1 ; i++) {
-      paginateParentElem.insertAdjacentHTML('beforeend', `
-      ${Number(currentPage) ==i?`
+  });
+};
+const SearchInArray = (array, searchproperty, searchvalue) => {
+  let output = array.filter(item => item[searchproperty].includes(searchvalue))
+  return output
+};
+const addParamToUrl = (param, value) => {
+
+  let url = new URL(location.href)
+  let searchParams = url.searchParams
+
+  searchParams.set(param, value)
+  url.search = searchParams.toString()
+  location.href = url.toString()
+
+}
+const paginateItems = (array, itemsPerPage, paginateParentElem, currentPage) => {
+  let endIndex = itemsPerPage * currentPage
+  let startIndex = endIndex - itemsPerPage
+  let paginatedItems = array.slice(startIndex, endIndex)
+  let paginatedCount = Math.ceil(array.length / itemsPerPage)
+
+  for (let i = 1; i < paginatedCount + 1; i++) {
+    paginateParentElem.insertAdjacentHTML('beforeend', `
+      ${Number(currentPage) == i ? `
       <li class=" rounded-md cursor-pointer  bg-gray-2 text-orange-1">
       
       <a class="h-9 w-9 flex justify-center items-center" onclick="addParamToUrl('page',${i})">${convertEnNumberToPersian(i)}</a>
       </li>
       
-      `:`
+      `: `
       <li class="h-9 w-9 rounded-md flex justify-center cursor-pointer items-center bg-orange-1 hover:bg-gray-2 hover:text-orange-1">
       
       <a class="h-9 w-9 flex justify-center items-center" onclick="addParamToUrl('page',${i})">${convertEnNumberToPersian(i)}</a>
@@ -166,11 +166,10 @@ return output
       `}
      
       `)
-    }
-    return paginatedItems
   }
-  export{showSwal , saveIntoLocalStorage , getToken , isLogin,getUrlParam , insertAdjacentHTML,SearchInArray,paginateItems,addParamToUrl}
+  return paginatedItems
+}
+export { showSwal, saveIntoLocalStorage, getToken, isLogin, getUrlParam, insertAdjacentHTML, SearchInArray, paginateItems, addParamToUrl }
 
 
 
- 
