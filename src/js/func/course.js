@@ -6,6 +6,7 @@ import { convertEnNumberToPersian } from "../numberToPersian.js";
 const getAndShowCoursesDetail = async () => {
     const courseyName = getUrlParam("name");
     const Title = document.querySelector("#Course-Title")
+    const introDescription = document.querySelector("#Course-introDesc")
     const Description = document.querySelector("#Course-Desc")
     const Category = document.querySelector("#Course-Category")
     const Register = document.querySelector("#Course-Register")
@@ -39,6 +40,7 @@ getRelatedCourses(course)
     Title.innerHTML = course.name
     //Course-description
     Description.innerHTML = course.description
+    introDescription.innerHTML = course.description
     //Course-Category
     Category.innerHTML = course.categoryID.title
     //Course-Register
@@ -225,7 +227,7 @@ if(course.sessions.length){
     course.sessions.forEach(element => {
                 
         sessionsWrapper.insertAdjacentHTML("beforeend",`
-        <li class="flex items-center justify-between px-4 font-ybakhbold border-b-2 bg-gray-2 border-gray-3 h-11 pr-2 hover:bg-gray-1 ">
+        <li class="flex items-center justify-between px-4 font-ybakhbold border-b-2 text-slate-400 bg-gray-2 border-gray-3 h-11 pr-2 hover:bg-gray-1 ">
             <div class="flex gap-1 items-center">
                 <span class="border-2 border-slate-500 rounded-full h-7 w-7 flex justify-center items-center">${index}</span>
                 <a href="episode.html?name=${course.shortName}&id=${element._id}"> ${element.title}</a>
@@ -245,7 +247,7 @@ if(course.sessions.length){
     
                 
             sessionsWrapper.insertAdjacentHTML("beforeend",`
-            <li class="flex items-center justify-between px-4 font-ybakhbold border-b-2 border-gray-2 h-11 pr-2 hover:bg-slate-800 ">
+            <li class="flex items-center justify-between px-4 text-slate-400 font-ybakhbold border-b-2 border-gray-2 h-11 pr-2 hover:bg-slate-800 ">
                 <div class="flex gap-1 items-center">
                     <span class=" gap-2 flex justify-center items-center"> هنوز جلسه ای بارگذاری نشده است <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 animate-bounce ">
                     <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z" clip-rule="evenodd" />
