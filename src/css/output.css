@@ -1127,6 +1127,26 @@ video {
   height: 100%;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-1 {
+  height: 0.25rem;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-\[3px\] {
+  height: 3px;
+}
+
+.h-\[2px\] {
+  height: 2px;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -2538,6 +2558,11 @@ video {
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
+.bg-orange-2 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 105 5 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-30 {
