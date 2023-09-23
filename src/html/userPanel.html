@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/input.css">
+    <title>Document</title>
+</head>
+<body class="bg-gray-1 " style="direction: rtl;" x-data="{sorting:false , index:false }" >
+    <header class="lg:flex justify-around">
+        <!--start-nav-->
+        <nav class="w-full h-auto fixed  top-0 left-0 z-30" x-data="{showNav:false,Desktop: window.innerWidth >= 1024}" x-init="() => {isDesktop = window.innerWidth >= 1024;}"  x-on:click.away="showNav=false">
+          <!--bars-menue-icon-->
+          <svg id="up" x-on:click="showNav=true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="lg:hidden w-6 h-6 absolute top-1 right-1 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <!--start-menue-->
+          <div x-bind:class="index ? 'lg:h-[350px]' : 'lg:h-[56px]' + (showNav ? ' right-0' : ' right-[-250px] lg:right-0')"
+          class="z-30 duration-300 overflow-hidden pr-2 w-[200px] lg:w-full h-[100vh]  absolute top-0 bottom-0 text-white shadow-lg shadow-black lg:shadow-none bg-gray-1 lg:bg-inherit font-ybakh flex flex-col gap-3">
+      
+            <!--logo lg-->
+            <div class="lg:hidden flex justify-center ">
+              <i>logo</i>
+            </div>
+            <div class="flex justify-center bg-gray-1 h-auto">
+            <div class="flex justify-between   relative top-0  w-[95%]  items-center h-full pb-2 pt-2 ">
+             
+              <!--menue-mobile-->
+              <ul class="menus-wrapper w-full lg:w-auto flex flex-col gap-3 lg:flex-row lg:gap-1" x-show="!isDesktop">
+                <!--loaded-from-js-->
+              
+              </ul>
+              <!--menue-dekstop-->
+              <ul class="menus-wrapper-dekstop w-full lg:w-auto flex gap-2" x-show="isDesktop">
+                <!--loaded-from-js-->
+            
+              </ul>
+              <a id="profile" href="login.html"
+              class="font-ybakhbold  text-white  py-2 px-3 md:p-3 text-[10px] md:text-base  rounded-xl  bg-orange-1 hidden lg:flex items-center h-[40px]">
+             
+              
+              
+             </a>
+            </div>
+          </div>
+          </div>
+          <!--start-menue-->
+      
+          <!--finish-menue-->
+        </nav>
+        <!--finish-nav-->
+      
+      </header>
+      <main class="flex flex-col lg:flex-row lg:justify-center lg:gap-10 items-center">
+        <div class="flex w-[95%] h-full lg:w-[40%]   flex-col items-center">
+            <div class="w-full bg-gray-2 p-4 rounded-md mt-9 lg:mt-16">
+        <div class="bg-gray-3 w-full  rounded-md ">
+            <ul class="text-slate-400 flex flex-col items-center lg:text-lg  font-ybakh gap-3 p-2 ">
+                <li class="font-ybakhfat text-xl text-orange-3">آرین شفیعی</li>
+                <li class="flex gap-1 flex-row-reverse">
+                    <a href="" class="hover:text-orange-1">پیشخوان</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M11.584 2.376a.75.75 0 01.832 0l9 6a.75.75 0 11-.832 1.248L12 3.901 3.416 9.624a.75.75 0 01-.832-1.248l9-6z" />
+                        <path fill-rule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 010 1.5H3a.75.75 0 010-1.5h.75v-9.918a.75.75 0 01.634-.74A49.109 49.109 0 0112 9c2.59 0 5.134.202 7.616.592a.75.75 0 01.634.74zm-7.5 2.418a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75zm3-.75a.75.75 0 01.75.75v6.75a.75.75 0 01-1.5 0v-6.75a.75.75 0 01.75-.75zM9 12.75a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75z" clip-rule="evenodd" />
+                        <path d="M12 7.875a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />
+                      </svg>
+                      
+                </li>
+                <li class="flex gap-1 flex-row-reverse">
+                    <a href="orders.html" class="hover:text-orange-1">سفارش</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zM6 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V12zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 15a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V15zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 18a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V18zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+                      </svg>
+                      
+                </li>
+                <li class="flex gap-1 flex-row-reverse">
+                    <a href="" class="hover:text-orange-1">کیف پول</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z" />
+                        <path fill-rule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" clip-rule="evenodd" />
+                      </svg>
+                      
+                </li>
+                <li class="flex gap-1 flex-row-reverse">
+                    <a href="profile.html" class="hover:text-orange-1">جزییات حساب کاربری</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zM9.75 17.25a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-.75zm2.25-3a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75zm3.75-1.5a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-5.25z" clip-rule="evenodd" />
+                        <path d="M14.25 5.25a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963A5.23 5.23 0 0016.5 7.5h-1.875a.375.375 0 01-.375-.375V5.25z" />
+                      </svg>
+                      
+                </li>
+                <li class="flex gap-1 flex-row-reverse">
+                    <a href="" class="hover:text-orange-1">دوره های خریداری شده</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
+                    <path fill-rule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z" clip-rule="evenodd" />
+                    <path d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z" />
+                  </svg>
+                  </li>
+                <li class="flex gap-1 flex-row-reverse"><a href="" class="hover:text-orange-1">تیکت ها</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M6 3a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3H6zm1.5 1.5a.75.75 0 00-.75.75V16.5a.75.75 0 001.085.67L12 15.089l4.165 2.083a.75.75 0 001.085-.671V5.25a.75.75 0 00-.75-.75h-9z" clip-rule="evenodd" />
+                  </svg>
+                  </li>
+                <li class="flex gap-1 flex-row-reverse">
+                    <a href="" class="hover:text-orange-1">خروج</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-4.28 9.22a.75.75 0 000 1.06l3 3a.75.75 0 101.06-1.06l-1.72-1.72h5.69a.75.75 0 000-1.5h-5.69l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3z" clip-rule="evenodd" />
+                  </svg>
+                  </li>
+         
+            </ul>
+     
+
+        </div>
+    </div>
+        <span class="text-orange-1 font-ybakhfat mt-2 lg:hidden">مرسی که نارنجی هاب رو انتخاب میکنی(:</span>
+    </div>
+    <div class="hidden lg:block"><img src="../../media/img/Lock - Modernblack (Rightview).png" class="h-[500px] w-[400px] mt-14" alt="" srcset=""></div>
+      </main>
+      <footer>
+        <!--footer-->
+        <div class="footer flex justify-center mt-16 text-white   overflow-hidden">
+         <div class="footer-continer w-[95%] lg:w-[85%] bg-gray-2 pt-2 pl-2 pr-2">
+          <!--title-->
+          <div class="flex justify-center">
+           LOGO
+          </div>
+          <!--support-->
+          <div class=" font-ybakhbold text-xs  flex flex-col gap-1 pt-4">
+           <div class=" flex gap-2"> <span> شماره تلفن پشتیبانی :</span><span>09902345678</span></div>
+      
+           <div class=""><span>پشتیبانی و ثبت سفارش 24 ساعته</span></div>
+          </div>
+      
+          <!--about-->
+          <div class=" flex flex-col mt-3">
+           <a href="" class=" font-ybakhbold flex justify-center"><span class="text-slate-300">درباره  اموزشگاه نارنجی </span> </a>
+           <span href="" class="about__subtitle font-ybakh  text-xs"> لورم ایپسوم متن ساختگی با تولید
+            سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
+            سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+            کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آلورم ایپسوم متن ساختگی با تولید سادگی
+            نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
+            سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+            کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
+            تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی ینده شناخت فراوان جامعه
+            و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی
+           </span>
+      
+      
+      
+          </div>
+          <!--social-network-->
+          <div class=" flex flex-col justify-center items-center gap-3 mt-4">
+           <div class="social-network__title font- flex items-center gap-2  font-ybakhbold"><span>با ما همراه باشید
+            </span><i class="fas fa-smile"></i></div>
+           <!--social-network__icons-->
+           <div class=" flex gap-2 ">
+            <a href="" class=""><img class="h-8 w-8" src="../../media/img/instagram.png" alt="" srcset=""></a>
+            <a href="" class=""><img class="h-8 w-8" src="../../media/img/icons8-telegram-94.png" alt="" srcset=""></a>
+      
+      
+           </div>
+           <!--footer-enamd-->
+          </div>
+          <div class=" flex justify-between lg:justify-around items-center">
+           <a href=""> <img class="w-[150px] h-[150px]" src="../../media/img/enamad.jpg" alt=""></a>
+           <a href="#up"
+            class="h-40 w-16 rounded-t-full bg-orange-1 flex items-center justify-center font-ybakhfat duration-200 hover:scale-110">برو
+            بالا</a>
+      
+          </div>
+         </div>
+        </div>
+      
+      
+      
+      
+       </footer>
+
+<script src="../../vandor/alpine/alpine.js"  type="module"></script>
+<script type="module" src="../js/shared.js"></script>
+<script>
+ import Alpine from 'alpinejs'
+
+ window.Alpine = Alpine
+
+ Alpine.start()
+</script>
+</body>
+</html>
