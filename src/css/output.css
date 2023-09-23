@@ -917,13 +917,6 @@ video {
   box-sizing: content-box;
 }
 
-.line-clamp-4 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-}
-
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -1134,22 +1127,6 @@ video {
   height: 100%;
 }
 
-.h-\[\] {
-  height: ;
-}
-
-.h-\[1000px\] {
-  height: 1000px;
-}
-
-.h-\[8000px\] {
-  height: 8000px;
-}
-
-.h-\[800px\] {
-  height: 800px;
-}
-
 .w-0 {
   width: 0px;
 }
@@ -1266,26 +1243,6 @@ video {
   width: 100%;
 }
 
-.w-\[120px\] {
-  width: 120px;
-}
-
-.w-\[1280px\] {
-  width: 1280px;
-}
-
-.w-\[0px\] {
-  width: 0px;
-}
-
-.w-\[700px\] {
-  width: 700px;
-}
-
-.w-\[500px\] {
-  width: 500px;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1328,6 +1285,12 @@ video {
 
 .border-separate {
   border-collapse: separate;
+}
+
+.border-spacing-1 {
+  --tw-border-spacing-x: 0.25rem;
+  --tw-border-spacing-y: 0.25rem;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
 .-translate-x-full {
@@ -4366,16 +4329,16 @@ button {
     margin-top: 3.5rem;
   }
 
+  .lg\:mt-16 {
+    margin-top: 4rem;
+  }
+
   .lg\:mt-20 {
     margin-top: 5rem;
   }
 
   .lg\:mt-24 {
     margin-top: 6rem;
-  }
-
-  .lg\:mt-16 {
-    margin-top: 4rem;
   }
 
   .lg\:block {
@@ -4438,6 +4401,10 @@ button {
     width: 30%;
   }
 
+  .lg\:w-\[40\%\] {
+    width: 40%;
+  }
+
   .lg\:w-\[47\%\] {
     width: 47%;
   }
@@ -4462,22 +4429,6 @@ button {
     width: 100%;
   }
 
-  .lg\:w-\[\] {
-    width: ;
-  }
-
-  .lg\:w-\[4\] {
-    width: 4;
-  }
-
-  .lg\:w-\[40\%\] {
-    width: 40%;
-  }
-
-  .lg\:w-\[45\%\] {
-    width: 45%;
-  }
-
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -4488,14 +4439,6 @@ button {
 
   .lg\:flex-col {
     flex-direction: column;
-  }
-
-  .lg\:items-start {
-    align-items: flex-start;
-  }
-
-  .lg\:items-end {
-    align-items: flex-end;
   }
 
   .lg\:items-center {
@@ -4522,16 +4465,16 @@ button {
     gap: 0.25rem;
   }
 
+  .lg\:gap-10 {
+    gap: 2.5rem;
+  }
+
   .lg\:gap-2 {
     gap: 0.5rem;
   }
 
   .lg\:gap-20 {
     gap: 5rem;
-  }
-
-  .lg\:gap-10 {
-    gap: 2.5rem;
   }
 
   .lg\:bg-inherit {
@@ -4548,14 +4491,14 @@ button {
     line-height: 1.5rem;
   }
 
-  .lg\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
   .lg\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .lg\:shadow-none {
